@@ -1,0 +1,142 @@
+import React from 'react';
+import { useState } from 'react'
+//import { Github, Linkedin, Youtube } from 'lucide-react';
+import './socialLinks.css'
+
+
+
+
+const ContactForm = () => {
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch('http://localhost:3000/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, message }),
+            });
+
+            const result = await response.json();
+            if (response.ok && result.success) {
+                alert('Email sent successfully!');
+                setEmail('');
+                setMessage('');
+            } else {
+                alert('Failed to send email.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while sending the email.');
+        }
+    };
+
+    return (
+        <form className="FormContact" onSubmit={handleSubmit}>
+            <input
+                type="email"
+                id="email"
+                className="Input"
+                placeholder="Your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+            />
+            <textarea
+                id="message"
+                className="Textarea"
+                placeholder="Your message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                required
+            ></textarea>
+            <button type="submit" className="Button">Send</button>
+        </form>
+
+    );
+};
+const SocialLinks = () => {
+    const [showContactForm, setShowContactForm] = useState(false);
+
+    const socialLinks = [
+        { name: 'Gmail', url: '#', icon: 'M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z' },
+        { name: 'GitHub', url: 'https://github.com/K3lloggs', icon: 'M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.167 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z' },
+        { name: 'LinkedIn', url: 'https://www.linkedin.com/in/c0nn0r-cl0se/', icon: 'M4 3C3.44772 3 3 3.44772 3 4V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20V4C21 3.44772 20.5523 3 20 3H4ZM8.04 17.08H5.44V9.4H8.04V17.08ZM6.72 8.26C5.84 8.26 5.12 7.52 5.12 6.62C5.12 5.72 5.84 5 6.72 5C7.6 5 8.32 5.72 8.32 6.62C8.32 7.52 7.6 8.26 6.72 8.26ZM18.56 17.08H15.96V13.42C15.96 12.38 15.94 11.06 14.52 11.06C13.08 11.06 12.86 12.18 12.86 13.34V17.08H10.26V9.4H12.76V10.48H12.8C13.16 9.84 14 9.18 15.24 9.18C17.88 9.18 18.56 11 18.56 13.38V17.08Z' },
+        { name: 'YouTube', url: 'https://www.youtube.com/watch?v=_njf8jwEGRo&list=PL848F2368C90DDC3D&index=21', icon: 'M21.8 8.001a2.748 2.748 0 00-1.935-1.948C18.154 5.728 12 5.728 12 5.728s-6.154 0-7.865.325A2.748 2.748 0 002.2 8.001S1.875 9.932 1.875 11.863v1.805c0 1.931.325 3.862.325 3.862a2.748 2.748 0 001.935 1.948c1.711.325 7.865.325 7.865.325s6.154 0 7.865-.325a2.748 2.748 0 001.935-1.948s.325-1.931.325-3.862v-1.805c0-1.931-.325-3.862-.325-3.862zM9.772 15.168V9.358l5.4 2.905-5.4 2.905z' }
+    ];
+
+    const handleGmailClick = (e) => {
+        e.preventDefault();
+        setShowContactForm(!showContactForm);
+    };
+
+    return (
+        <section id="social-links">
+            <div className="social-icons">
+                {socialLinks.map((link) => (
+                    <a
+                        key={link.name}
+                        href={link.url}
+                        onClick={link.name === 'Gmail' ? handleGmailClick : undefined}
+                        target={link.name !== 'Gmail' ? "_blank" : undefined}
+                        rel={link.name !== 'Gmail' ? "noopener noreferrer" : undefined}
+                        aria-label={link.name}
+                        className={`social-icon ${link.name.toLowerCase()}`}
+                    >
+                        <svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <defs>
+                                <linearGradient id={`${link.name.toLowerCase()}Gradient`} x1="0" y1="0" x2="0" y2="1">
+                                    {link.name === 'Gmail' && (
+                                        <>
+                                            <stop offset="0%" stopColor="#D14836" />
+                                            <stop offset="100%" stopColor="#EA4335" />
+                                        </>
+                                    )}
+                                    {link.name === 'GitHub' && (
+                                        <>
+                                            <stop offset="0%" stopColor="black" />
+                                            <stop offset="100%" stopColor="purple" />
+                                        </>
+                                    )}
+                                    {link.name === 'LinkedIn' && (
+                                        <>
+                                            <stop offset="0%" stopColor="#0077b5" />
+                                            <stop offset="100%" stopColor="#00a0dc" />
+                                        </>
+                                    )}
+                                    {link.name === 'YouTube' && (
+                                        <>
+                                            <stop offset="0%" stopColor="#FF0000" />
+                                            <stop offset="100%" stopColor="#C80000" />
+                                        </>
+                                    )}
+                                </linearGradient>
+                            </defs>
+                            <path
+                                d={link.icon}
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                            />
+                        </svg>
+                    </a>
+                ))}
+            </div>
+            <div className={`form-container ${showContactForm ? 'show' : ''}`}>
+                <ContactForm />
+            </div>
+        </section>
+    );
+};
+
+export default SocialLinks;
