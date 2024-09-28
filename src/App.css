@@ -1,230 +1,254 @@
-/* General Styles */
+/* App.css */
+
+/* Global Styles */
 html,
 body {
-  scroll-padding-top: 100px;
   margin: 0;
-  background: #EEEEEE;
-  font-family: Helvetica, sans-serif;
+  padding: 0;
+  font-family: Helvetica;
+  background-color: #EEEEEE;
+  color: #1E1E1E;
+  line-height: 1.6;
   scroll-behavior: smooth;
-  overflow-y: scroll;
+  scroll-padding-top: 60px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Header */
+.header {
+  width: 100%;
+  height: 60px;
+  position: absolute ;
+  top: 0;
+  padding-left: 280px;
+  background: #FFFFFF;
+  border-bottom: 1px solid #D9D9D9;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+/* Navigation */
+
+
+
+.nav {
+  
+  display: flex;
+  gap: 10px;
+}
+
+.nav a {
+  
+  padding: 10px;
+  text-decoration: none;
+  color: #2c2929;
+  font-size: 14px;
+  text-transform: none;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+  margin-left: 1px;
+}
+
+.nav a:hover {
+  color: #2f2a2a;
+}
+
+.nav a:active {
+  color:gray
+}
+
+.chat-button{
+  color: #d11919;
+}
+.chat-button:hover{
+  color: #ce1e1e;
+}
+.chat-button:active{
+  color: #ba2222;
+}
+
+/* Home Container */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 60px); /* Adjust for header height */
+  padding: 0 20px;
+  margin-top: 60px; /* Adjust for fixed header */
+}
+
+
+.main-title {
+  font-size: 120px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #1E1E1E;
+  margin-top: 50px;
 
 }
 
+.subtitle {
+  font-size: 5px;
+  font-weight: 400;
+  justify-content: left;
+  margin-left: 290px;
+  line-height: 1.2;
+  color: #1E1E1E;
+  margin-top: -200px;
+  margin-bottom: 100;
+}
+
+.subtitle span {
+  display: block;
+  
+}
+
+.tagline {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.4;
+  
+  color: #1E1E1E;
+  margin: 20px 0; /* Adds space above and below the tagline */
+}
+
+.tagline .ampersand {
+  color: red;
+}
+
+.tagline p {
+  margin-left: 800px;
+}
+
+/* Section */
 .section {
+  margin-left: 10px;
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.about-image {
-  width: 150px;
-  /* Adjust size as needed */
-  height: auto;
-  margin-right: 20px;
-  /* Space between image and text */
-  float: left;
-}
-
-.about-content {
-  display: flex;
-  align-items: flex-start;
-  left: 500;
-}
-
-
-.about-text {
-  flex: 1;
-}
-
-/* Class added when the section is visible */
-.show {
+.section.show {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Additional styles for the main content */
-.main-content {
-  padding: 50px;
-}
-
-/* Footer padding */
-.footer-padding {
-  height: 100px;
-}
-
-.scrollable-container {
-  font-family: 'Helvetica';
-  font-weight: 400;
-  line-height: 20px;
-  word-wrap: break-word;
-  height: 200px;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-}
-
-/* WebKit Scrollbar Styling */
-.scrollable-container::-webkit-scrollbar {
-  width: 8px;
-}
-
-.scrollable-container::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.scrollable-container::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 10px;
-  border: 2px solid #f1f1f1;
-}
-
-.scrollable-container::-webkit-scrollbar-thumb:hover {
-  background-color: #555;
-}
-
-
-
-/* General Button Styles */
-.Button {
-  padding: 8px 16px;
-  background: #2C2C2C;
-  color: #F5F5F5;
-  border: 1px solid #2C2C2C;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.1);
-  /* Add shadow */
-}
-
-
-
-/* Hover effect for buttons */
-.Button:hover {
-  background: #3d3d3d;
-  /* Change color on hover */
-  box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.2);
-  /* Slightly increase shadow on hover */
-}
-
-/* Navigation Pill styles */
-.NavigationPill {
-  padding: 8px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-  /* Smooth hover transition */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  /* Add shadow */
-}
-
-.NavigationPill:hover {
-  background: #F5F5F5;
-  /* Change background color on hover */
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-  /* Increase shadow on hover */
-}
-
-.header {
-  width: 100%;
-  height: 80px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: white;
-  border-bottom: 1px solid #D9D9D9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.nav {
-  display: flex;
-  gap: 16px;
-}
-
-.nav a {
-  padding: 10px 20px;
-  border: 2px solid black;
-  border-radius: 8px;
-  text-decoration: none;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  /* Button shadow */
-}
-
-.nav a span {
-  color: #1E1E1E;
-  font-size: 16px;
-  font-weight: 400;
-}
-
-.nav a:hover {
-  background: #e5e0e0ca;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  /* Hover effect */
-  transform: translateY(-2px);
-  /* Lift effect on hover */
-}
-
-.nav a:active {
-  transform: translateY(0);
-  /* Click effect */
-  box-shadow: 1 2px 5px rgba(0, 0, 0, 0.1);
-  /* Reduce shadow on click */
-}
-
-a:visited {
-  color: inherit;
-  /* Inherit the color from its parent or set it to a specific color */
-}
-
-/* Main Title */
-.main-title {
-  margin-top: 150px;
-  text-align: center;
-  font-size: 80px;
-  font-weight: 400;
-  color: black;
-}
-
-/* Subtitle */
-.subtitle {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.subtitle span {
-  font-size: 40px;
-  font-weight: 400;
-  color: black;
-}
-
-/* Section */
-.section {
-  width: 80%;
-  max-width: 1000px;
-  margin: 50px auto;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  text-align: right;
 }
 
 .section h1 {
   font-size: 40px;
   margin-bottom: 20px;
+  margin-left: -280px;
+  color: #1E1E1E;
 }
 
 .section p {
+  font-size: 18px;
+  line-height: 1.0;
+  display: flex;
+  
+  color: #333333;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin-left: 20px ;
+  padding: 0 20px;
+}
+
+/* About Section */
+.about-content {
+  display: flex;
+  text-align: left ;
+  margin-left: 240px;
+  align-items: flex-start;
+  gap: 20px;
+}
+.text-content {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 200px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.about-image {
+  width: 150px;
+  height: auto;
+  flex-shrink: 0;
+  margin-right:-160px;
+  margin-top: 0px;
+  
+}
+
+/* Projects Section */
+.projects-container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: start;
+}
+
+.project-preview {
+  position: relative;
+}
+
+.project-preview-content {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.project-preview-content.visible {
+  opacity: 1;
+}
+
+.project-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.button-container {
+  position: fixed; /* Fixes the container to the viewport */
+  top: 0px; /* Adjusts the top spacing */
+  left: 205px; /* Positions the container on the left side */
+  display: flex; /* Ensures a flex layout */
+  flex-direction: column; /* Stacks buttons vertically */
+  gap: 10px; /* Adds space between buttons */
+}
+
+
+.button-container .project-button {
+  padding: 12px 24px;
+  background: transparent;
+  color: #1E1E1E;
+  border: 2px solid #1E1E1E;
+  border-radius: 0;
+  cursor: pointer;
   font-size: 16px;
-  line-height: 1.6;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button-container .project-button:hover {
+  background-color: #1E1E1E;
+  color: #FFFFFF;
+  align-items: right;
+}
+
+.button-container .project-button:focus {
+  outline: none;
+  align-items: left;
 }
 
 /* Footer Padding */
@@ -235,14 +259,68 @@ a:visited {
 /* Responsive Design */
 @media (max-width: 768px) {
   .main-title {
-    font-size: 60px;
+    font-size: 80px;
   }
 
-  .section {
-    width: 90%;
+  .subtitle {
+    font-size: 30px;
+    
   }
 
-  .nav a {
-    padding: 8px 14px;
+  .tagline {
+    font-size: 16px;
   }
+
+  .section h1 {
+    font-size: 32px;
+  }
+
+  .section p {
+    font-size: 16px;
+  }
+
+  .nav {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+
+  .button-container {
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .button-container .project-button {
+    flex: 1 1 calc(200px);
+  }
+}
+
+/* Additional Styles */
+
+/* Scrollbar Styling */
+.scrollable-container {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.scrollable-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollable-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.scrollable-container::-webkit-scrollbar-thumb {
+  background-color: #efeded;
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+}
+
+.scrollable-container::-webkit-scrollbar-thumb:hover {
+  background-color: #d6cdcd;
 }

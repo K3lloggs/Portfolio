@@ -1,12 +1,20 @@
+// Import dependencies
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-require('dotenv').config(); // Corrected import
+require('dotenv').config();
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+
+// Route to handle root path
+app.get('/', (req, res) => {
+    res.send('Server is up and running!');
+});
+
+
 
 // Configure your email transporter
 let transporter = nodemailer.createTransport({

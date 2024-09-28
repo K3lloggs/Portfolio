@@ -1,0 +1,86 @@
+/* Projects.css */
+
+/* Container for Projects Section */
+.projects-container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: start;
+    margin-top: 40px;
+  }
+  
+  /* Project Preview Area */
+  .project-preview {
+    position: relative;
+    left:425px
+  }
+  
+  .project-preview-content {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    margin-top: -200px;
+    
+
+  }
+  
+  .project-preview-content.visible {
+    opacity: 1;
+  }
+  
+  .project-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    
+    
+  }
+  
+  /* Button Container */
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .project-button {
+    padding: 1px 24px;
+    background: none;
+    color: #981f1f;
+    border: 2px solid #1E1E1E;
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .project-button:hover {
+    background-color: #1E1E1E;
+    color: #FFFFFF;
+    
+  }
+  
+  .project-button:focus {
+    outline: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .projects-container {
+      grid-template-columns: 1fr;
+    }
+  
+    .button-container {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  
+    .project-button {
+      flex: 1 1 calc(50% - 10px);
+    }
+  }
+  

@@ -1,9 +1,11 @@
 
+// App.js
 import React, { useEffect } from 'react';
 import './App.css';
-import profileImage from './profilePic-removebg-preview.jpg';
-import socialLinks from './socialLinks'; // Adjust the import path as needed
+import profileImage from './profilePic-removebg-preview.jpg'; // Adjust the import path as needed
 import SocialLinks from './socialLinks';
+import Projects from './projects'; // Ensure the path is correct
+import TextScramble from './TextScramble';
 
 const App = () => {
   // Intersection Observer logic
@@ -19,8 +21,8 @@ const App = () => {
     });
 
 
-    // Select all sections with the 'hidden' class
-    const hiddenElements = document.querySelectorAll('.section', '.ConnorClose');
+    // Select all sections with the 'section' class
+    const hiddenElements = document.querySelectorAll('.section');
     hiddenElements.forEach((el) => observer.observe(el));
   }, []);
 
@@ -35,204 +37,114 @@ const App = () => {
     <div>
       {/* Header */}
       <header className="header">
+
+
         <nav className="nav">
           <a href="#home" onClick={scrollToTop}>Home</a>
-          <a href="#about"><span>About</span></a>
-          <a href="#projects"><span>Projects</span></a>
-          <a href="#resume"><span>Resume</span></a>
-          <a href="#blog"><span>Blog</span></a>
-          <a href="#chat"><span>Chat</span></a>
-          <a href="#contact"><span>Contact</span></a>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#resume">Resume</a>
+          <a href="#blog">Blog</a>
+          <a href="#chat" className="chat-button">Chat</a>
         </nav>
+        <section id="contact" className="section">
+          <div className="container">
+            <SocialLinks />
+          </div>
+        </section>
       </header>
-
-
 
       {/* Main Content */}
       <main>
+        {/* Home Section */}
+        <div className="home-container">
+          <h1 className="main-title">
+            <TextScramble phrases={['{ Connor Close }']} />
+          </h1>
 
-        <div
-          className="Desktop1"
-          style={{
-            width: 1440,
-            height: 1024,
-            position: 'relative',
-            background: '#EEEEEE',
-          }}
-        >
-          <div
-            className="ConnorClose"
-            style={{
-              width: 864.54,
-              left: 100,
-              top: 150,  // Moved upwards (previously 234px)
-              position: 'absolute',
-              color: 'black',
-              fontSize: 120,
-              fontFamily: 'Helvetica',
-              fontWeight: 400,
-              lineHeight: '120px',
-              wordWrap: 'break-word',
-            }}
-          >
-            Connor Close{'{ }'}
-          </div>
-          <div
-            className="EngDevAnlYstDsnGer"
-            style={{
-              width: 273,
-              height: 449,
-              left: 200,  // Changed from 'left' to 'right' for right alignment
-              top: 300,    // Adjust vertical positioning
-              position: 'absolute',
-
-            }}
-          >
-            <span
-              style={{
-                color: 'black',
-                fontSize: 40,
-                fontFamily: 'Helvetica',
-                fontWeight: 400,
-                lineHeight: '40px',
-                wordWrap: 'break-word',
-              }}
-            >
-              ENG
-              <br />
-            </span>
-            <span
-              style={{
-                color: 'black',
-                fontSize: 38,
-                fontFamily: 'Helvetica',
-                fontWeight: 400,
-                lineHeight: '38px',
-                wordWrap: 'break-word',
-              }}
-            >
-              DEV
-              <br />
-            </span>
-            <span
-              style={{
-                color: 'black',
-                fontSize: 40,
-                fontFamily: 'Helvetica',
-                fontWeight: 400,
-                lineHeight: '40px',
-                wordWrap: 'break-word',
-              }}
-            >
-              ANL
-              <br />
-            </span>
-            <span
-              style={{
-                color: 'black',
-                fontSize: 41.11,
-                fontFamily: 'Helvetica',
-                fontWeight: 400,
-                lineHeight: '41.11px',
-                wordWrap: 'break-word',
-              }}
-            >
-              YST
-              <br />
-            </span>
-            <span
-              style={{
-                color: 'black',
-                fontSize: 40,
-                fontFamily: 'Helvetica',
-                fontWeight: 400,
-                lineHeight: '40px',
-                wordWrap: 'break-word',
-              }}
-            >
-              DSN
-              <br />
-              GER.
-              <br />
-            </span>
-          </div>
-
-          <div
-            className="SoftwareDevelopmentDesign"
-            style={{
-              width: 515,
-              height: 462,
-              right: 50,  // Aligned to the right
-              top: 300,   // Adjust vertical positioning
-              position: 'absolute',
-              right: 807,
-              textAlign: 'right',  // Text alignment
-              color: 'black',  // Text color
-              fontSize: '20px',  // Font size
-              fontFamily: 'Helvetica',  // Font family
-              fontWeight: 400,  // Font weight
-              lineHeight: '20px',  // Line height
-              wordWrap: 'break-word',  // Enable word wrapping
-            }}
-          >
-            <span>
-              Software
-              <br />
-              Development <span style={{ color: 'red' }}>&</span> Design
-              <br />
+          <div className="tagline">
+            <p>
+              Software Development <span className="ampersand">&</span> Design
               <br />
               Finance & Blockchain
-              <br />
-            </span>
+            </p>
           </div>
+
+          <div className="subtitle">
+
+            <p>
+              <span>ENG</span>
+              <span>DEV</span>
+              <span>ANL</span>
+              <span>YST</span>
+              <span>DSN</span>
+              <span>GER.</span>
+            </p>
+          </div>
+
+
         </div>
+
+        {/* About Section */}
+        <section id="about" className="section">
+          <div className="container">
+            <h1>About</h1>
+            <div className="about-content">
+              <div className="text-content">
+                <div className="column">
+                  9 years of enthusiastic<br />
+                  experience from metal to<br />
+                  systems, networking, <br />
+                  software engineering,<br />
+                  computer science,<br />
+                  deeplearning and Ai.<br />
+                  Extending the tech paradigm<br />
+                  offering a diverse set of<br />
+                  skills and intuition.<br />
+                </div>
+                <div className="column">
+                  Currently researching<br />
+                  quantitative trading<br />
+                  across blockchain and<br />
+                  financial markets<br />
+                </div>
+              </div>
+              <img src={profileImage} className="about-image" alt="Profile" />
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section id="projects" className="section">
+          <div className="container">
+            <h1>Projects</h1>
+            <Projects />
+          </div>
+        </section>
+
+
+        {/* Blog Section */}
+        <section id="blog" className="section">
+          <div className="container">
+            <h1>Blog</h1>
+            <p>-Click here -</p>
+          </div>
+        </section>
+
+        {/* Resume Section */}
+        <section id="resume" className="section">
+          <div className="container">
+            <h1>Resume</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel libero at dui sodales auctor.</p>
+          </div>
+        </section>
+
+
       </main>
-
-
-      {/* About Section */}
-      <section id="about" className="section">
-        <img src={profileImage} className="about-image" />
-        <h1>About</h1>
-
-        <p>I like to build to software to ehance predictions and decision making.
-          <br />
-          Im eager to apply my skills in an innovative team environment.
-          <br />
-          When I am not working, I find something new to learn, which is usually work related, or clean.
-
-        </p>
-      </section>
-      {/* Projects Section */}
-      <section id="projects" className="section">
-        <h1>Projects</h1>
-        <p>Details about the projects...</p>
-      </section>
-
-      {/* Resume Section */}
-      <section id="resume" className="section">
-        <h1>Resume</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel libero at dui sodales auctor.</p>
-      </section>
-
-      {/* Blog Section */}
-      <section id="blog" className="section">
-        <h1>Blog</h1>
-        <p> to view cognitive waste bin -Click here-</p>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="section">
-
-        <h1>Contact</h1>
-        <SocialLinks />
-
-      </section>
-
 
       {/* Footer Padding */}
       <div className="footer-padding"></div>
-    </div >
-
+    </div>
   );
 };
 
