@@ -6,6 +6,7 @@ import profileImage from './profilePic-removebg-preview.jpg'; // Adjust the impo
 import SocialLinks from './socialLinks';
 import Projects from './projects'; // Ensure the path is correct
 import TextScramble from './TextScramble';
+import Resume from './Resume';
 
 const App = () => {
   // Intersection Observer logic
@@ -127,15 +128,20 @@ const App = () => {
         <section id="blog" className="section">
           <div className="container">
             <h1>Blog</h1>
-            <p>-Click here -</p>
+            <a href="https://medium.com/@_bike" target="_blank" rel="noopener noreferrer">
+              Check out my Medium articles
+            </a>
           </div>
         </section>
+
 
         {/* Resume Section */}
         <section id="resume" className="section">
           <div className="container">
             <h1>Resume</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel libero at dui sodales auctor.</p>
+            <div>
+              <Resume />
+            </div>
           </div>
         </section>
 

@@ -21,15 +21,15 @@ const Projects = () => {
     // Project previews with images
     const projectPreviews = {
         project1: {
-            text: 'Preview of Project 1',
+            text: '.prod()',
             image: projectImage1,
         },
         project2: {
-            text: 'Preview of Project 2',
+            text: '.prod()',
             image: projectImage2,
         },
         project3: {
-            text: 'Preview of Project 3',
+            text: '.prod()',
             image: projectImage3,
         },
     };
