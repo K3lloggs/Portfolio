@@ -36,6 +36,11 @@ const TextScramble = ({ phrases }) => {
     }
   };
 
+
+
+
+
+
   const setText = (newText) => {
     const oldText = elRef.current.innerText;
     const length = Math.max(oldText.length, newText.length);

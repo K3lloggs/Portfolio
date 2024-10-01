@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './Projects.css';
 
 // Import images
-import projectImage1 from './images/Desktop _1.png';
+import projectImage1 from './images/falcon9Landing.png';
 import projectImage2 from './images/UntitledfinalCoin.png';
 import projectImage3 from './images/Desktop _1.png';
 
@@ -21,7 +21,7 @@ const Projects = () => {
     // Project previews with images
     const projectPreviews = {
         project1: {
-            text: '.prod()',
+            text: '',
             image: projectImage1,
         },
         project2: {

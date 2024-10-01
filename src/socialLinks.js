@@ -5,7 +5,6 @@ import './socialLinks.css'
 
 
 
-
 const ContactForm = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');

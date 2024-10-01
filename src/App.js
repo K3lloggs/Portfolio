@@ -1,6 +1,7 @@
 
 // App.js
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import './App.css';
 import profileImage from './profilePic-removebg-preview.jpg'; // Adjust the import path as needed
 import SocialLinks from './socialLinks';
@@ -9,6 +10,23 @@ import TextScramble from './TextScramble';
 import Resume from './Resume';
 
 const App = () => {
+
+
+  const [isChatOpen, setIsChatOpen] = useState(false);
+
+  const handleChatClick = () => {
+    setIsChatOpen(!isChatOpen);
+    // Add logic to open/close the chat using the attribute on df-messenger
+    const chatBox = document.querySelector('df-messenger');
+    if (chatBox) {
+      if (isChatOpen) {
+        chatBox.removeAttribute('opened');
+      } else {
+        chatBox.setAttribute('opened', 'true');
+      }
+    }
+  };
+
   // Intersection Observer logic
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -22,7 +40,8 @@ const App = () => {
     });
 
 
-    // Select all sections with the 'section' class
+
+    //
     const hiddenElements = document.querySelectorAll('.section');
     hiddenElements.forEach((el) => observer.observe(el));
   }, []);
@@ -30,7 +49,7 @@ const App = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth', // Smooth scrolling effect
+      behavior: 'smooth',
     });
   };
 
@@ -46,8 +65,13 @@ const App = () => {
           <a href="#projects">Projects</a>
           <a href="#resume">Resume</a>
           <a href="#blog">Blog</a>
-          <a href="#chat" className="chat-button">Chat</a>
+          <button className="chat-button" onClick={handleChatClick}>
+            Chat
+          </button>
         </nav>
+
+
+
         <section id="contact" className="section">
           <div className="container">
             <SocialLinks />
@@ -58,6 +82,8 @@ const App = () => {
       {/* Main Content */}
       <main>
         {/* Home Section */}
+
+
         <div className="home-container">
           <h1 className="main-title">
             <TextScramble phrases={['{ Connor Close }']} />
@@ -84,7 +110,13 @@ const App = () => {
           </div>
 
 
+
         </div>
+        {/* //////////////////////// /////////////////////// END LANDING //////////////////////// ////////////////// */}
+
+
+
+
 
         {/* About Section */}
         <section id="about" className="section">
@@ -145,8 +177,22 @@ const App = () => {
           </div>
         </section>
 
+      
+
 
       </main>
+
+      {isChatOpen && (
+          <df-messenger
+            intent="WELCOME"
+            chat-title="portfolio"
+            agent-id="63ec45b1-6984-467c-b6bc-75dbe08ba764"
+            language-code="en"
+          ></df-messenger>
+        )}
+
+
+
 
       {/* Footer Padding */}
       <div className="footer-padding"></div>

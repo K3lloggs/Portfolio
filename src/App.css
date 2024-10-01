@@ -6,7 +6,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: Helvetica;
-  background-color: #EEEEEE;
+  background: rgb(255, 255, 255);
+  background-color: #ebd9d9;
   color: #1E1E1E;
   line-height: 1.6;
   scroll-behavior: smooth;
@@ -20,18 +21,20 @@ body {
 /* Header */
 .header {
   width: 100%;
-  height: 60px;
+  height: 60px; /* Adjust height */
   text-decoration: none;
-  position: absolute;
+  position: fixed; /* Use fixed to avoid overlapping content */
   top: 0;
-  padding-left: 280px;
-  background: white;
+  background-color: rgb(234, 228, 228);
   border-bottom: 3px solid #080808;
+  background: rgb(244, 241, 241);
   display: flex;
-  justify-content: left;
+  justify-content: center; /* Center items for simplicity */
   align-items: center;
   z-index: 1000;
+  padding: 0 20px; /* Add padding to prevent overflow */
 }
+
 
 
 /* Navigation */
@@ -69,12 +72,12 @@ body {
 }
 
 .nav a:hover {
-  color: #2f2a2a;
+  color: #615a5a;
   text-decoration: none;
 }
 
 .nav a:active {
-  color: gray
+  color: rgb(216, 205, 205)
 }
 
 .nav a.chat-button {
@@ -355,4 +358,43 @@ body {
 
 .scrollable-container::-webkit-scrollbar-thumb:hover {
   background-color: #d6cdcd;
+}
+
+/* Hide the default Dialogflow floating button */
+df-messenger {
+  --df-messenger-button-display: none;
+}
+
+/* Chat button styling */
+.chat-button {
+  padding: 10px 20px;
+  border: 2px solid #1E1E1E;
+  background: transparent;
+  color: #1E1E1E;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chat-button:hover {
+  background: #F5F5F5;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Position the chat box to drop down */
+df-messenger {
+  position: fixed;
+  top: 60px; /* Adjust to the header height */
+  right: 20px;
+  width: 350px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Expand the chat box when opened */
+df-messenger[opened="true"] {
+  max-height: 500px; /* Adjust height as needed */
 }
