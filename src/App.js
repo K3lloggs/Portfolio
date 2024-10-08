@@ -39,8 +39,6 @@ const App = () => {
       });
     });
 
-
-
     //
     const hiddenElements = document.querySelectorAll('.section');
     hiddenElements.forEach((el) => observer.observe(el));
@@ -177,19 +175,19 @@ const App = () => {
           </div>
         </section>
 
-      
+
 
 
       </main>
 
       {isChatOpen && (
-          <df-messenger
-            intent="WELCOME"
-            chat-title="portfolio"
-            agent-id="63ec45b1-6984-467c-b6bc-75dbe08ba764"
-            language-code="en"
-          ></df-messenger>
-        )}
+        <df-messenger
+          intent="WELCOME"
+          chat-title="portfolio"
+          agent-id="63ec45b1-6984-467c-b6bc-75dbe08ba764"
+          language-code="en"
+        ></df-messenger>
+      )}
 
 
 

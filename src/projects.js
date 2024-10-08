@@ -1,85 +1,47 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import './Projects.css';
 
 // Import images
 import projectImage1 from './images/falcon9Landing.png';
 import projectImage2 from './images/UntitledfinalCoin.png';
-import projectImage3 from './images/Desktop _1.png';
+import projectImage3 from './images/Desktop _1.png';// Corrected filename
+
+const projectsData = [
+  {
+    id: 1,
+    title: 'Falcon 9 Landing',
+    description: 'Anlysis of cost variables and optimal launch conditions ',
+    image: projectImage1,
+  },
+  {
+    id: 2,
+    title: 'Coin',
+    description: 'Crpyto Arbitrage and tracking platform.',
+    image: projectImage2,
+  },
+  {
+    id: 3,
+    title: 'Coin in prod',
+    description: 'This platform in currently in devlopment.',
+    image: projectImage3,
+  },
+  // Add more projects as needed
+];
 
 const Projects = () => {
-    // State to keep track of the hovered project
-    const [hoveredProject, setHoveredProject] = useState(null);
-    const timeoutRef = useRef(null);
-
-    // Cleanup timeout on unmount
-    useEffect(() => {
-        return () => {
-            clearTimeout(timeoutRef.current);
-        };
-    }, []);
-
-    // Project previews with images
-    const projectPreviews = {
-        project1: {
-            text: '',
-            image: projectImage1,
-        },
-        project2: {
-            text: '.prod()',
-            image: projectImage2,
-        },
-        project3: {
-            text: '.prod()',
-            image: projectImage3,
-        },
-    };
-
-    const handleMouseEnter = (project) => {
-        timeoutRef.current = setTimeout(() => {
-            setHoveredProject(project);
-        }, 500); // 500ms delay
-    };
-
-    const handleMouseLeave = () => {
-        clearTimeout(timeoutRef.current);
-        setHoveredProject(null);
-    };
-
-    return (
-        <section id="projects" className="section">
-            <div className="projects-container">
-                {/* Preview Section */}
-                <div className="project-preview">
-                    <div className={`project-preview-content ${hoveredProject ? 'visible' : ''}`}>
-                        {hoveredProject && (
-                            <>
-                                <img
-                                    src={projectPreviews[hoveredProject].image}
-                                    alt={`${hoveredProject} preview`}
-                                    className="project-image"
-                                />
-                                <p>{projectPreviews[hoveredProject].text}</p>
-                            </>
-                        )}
-                    </div>
-                </div>
-
-                {/* Buttons Section */}
-                <div className="button-container">
-                    {Object.keys(projectPreviews).map((projectKey) => (
-                        <button
-                            key={projectKey}
-                            className="project-button"
-                            onMouseEnter={() => handleMouseEnter(projectKey)}
-                            onMouseLeave={handleMouseLeave}
-                        >
-                            {projectKey.replace('project', 'Project ')}
-                        </button>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+  return (
+    <section id="projects" className="section">
+      <div className="projects-container">
+        {projectsData.map((project) => (
+          <div key={project.id} className="project-card">
+            <img src={project.image} alt={project.title} />
+            <h3>{project.title}</h3>
+            <p>{project.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 };
 
 export default Projects;

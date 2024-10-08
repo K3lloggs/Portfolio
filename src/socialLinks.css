@@ -2,13 +2,15 @@
 
 /* Container for social icons */
 .social-icons {
-    
     display: flex;
+    justify-content: center; /* Center icons within the container */
+    gap: 10px;
     
-    justify-content: right;
-    gap: 12px;
-    margin-right: 165px;
+    margin: 20px auto;
+    position: relative; /* Keeps social icons in normal document flow */
+    z-index: 1; 
 }
+
 
 /* Social Icon Styles */
 .social-icon {
@@ -37,6 +39,8 @@
 .social-icon.gmail:hover path {
     fill: url(#gmailGradient);
     stroke: none;
+    position: relative;
+    z-index: 1010; /* Higher than the form */
 }
 
 .social-icon.github:hover path {
@@ -72,21 +76,30 @@
 }
 
 /* FORM SECTION */
-
 /* Form Container Styles */
 .form-container {
-    max-height: 0;
-    overflow: hidden;
-    
-    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+    position: fixed;
+    top: 160%; /* Center vertically */
+    left: -10%; /* Center horizontally */
+    transform: translate(-50%, -50%);
+    width: 100px;
+    max-width: 500px;
+    z-index: 1000; /* Ensure the form is above other content */
+    padding: 20px;
     opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+    pointer-events: auto;
+    transform: translate(-50%, -60%);
     
 }
 
 .form-container.show {
-    max-height: 400px;
-    /* Adjust based on your form's height */
     opacity: 1;
+    
+    visibility: visible;
+    transition: opacity 0.5s ease;
+    pointer-events: auto; 
     
 }
 
@@ -94,19 +107,22 @@
 .FormContact {
     background-color: transparent;
     /* Transparent background */
-    margin: 237px auto;
-    right:340px;
+    border:#333;
+    border-radius: 8px;
+    flex-direction: column;
+    margin-top: 300px;
+    right:-100px;
+    top:0px;
     padding: 20px;
-    max-width: 500px;
-    position: fixed;
+    width:400px;
+    max-width: 800px;
+    
     /* For positioning the close button */
-    display: flex;
     flex-direction: column;
     gap: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     
-    border: red;
-    /* Ensure no border is applied */
-    box-shadow: red;
+  
     /* Remove any shadow */
     /* Slight shadow for raised effect */
 }
@@ -114,25 +130,25 @@
 /* Input and Textarea Styles */
 .Input,
 .Textarea {
-    width: 70%;
-    color:white;
+    width: 100%; /* Full width within form */
+    margin-top: 10px;
+    margin-right: 100px;
+    color: rgb(0, 0, 0);
     padding: 12px;
-    border: none;
+    border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: transparent;
-    background-image: linear-gradient(45deg, rgb(0, 0, 0), rgb(45, 42, 42), rgb(43, 41, 41));
+    background-color: #f9f9f9;
     transition: all 0.3s ease;
     font-size: 16px;
+    box-sizing: border-box;
 }
 
 /* HERE FOR SEND TO FRONT TEXT*/
 .Input:focus,
 .Textarea:focus {
     outline: none;
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.15),
-        0 0 0 2px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
 }
 
 .Textarea {
@@ -145,7 +161,7 @@
 .Textarea:hover{
     
     
-    background-image: black;
+    
 
     box-shadow: none;
     transform: translateY(-2px);
@@ -154,16 +170,14 @@
 
 /* Button Styles */
 .Button {
-    align-self: flex-start;
+    align-self: center; /* Center the button within the form */
     padding: 10px 22px;
-    margin-left: 110px;
-    background-color: linear-gradient(45deg, rgb(218, 26, 26), rgb(203, 87, 87), rgb(248, 35, 6));
-    
-    margin-top: 30px;
+    background-image: linear-gradient(45deg, rgb(218, 26, 26), rgb(248, 35, 6));
+    color: #ffffff;
+    border: none;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: red;
     font-size: 20px;
 }
 
@@ -173,4 +187,32 @@
     box-shadow: none;
     transform: translateY(-2px);
     transition: all 0.3s ease;
+}
+.social-icons {
+    z-index: 1;
+}
+@media (max-width: 768px) {
+    .social-icons {
+        justify-content: center;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .social-icon svg {
+        width: 24px; /* Smaller icons on smaller screens */
+        height: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-icons {
+        flex-direction: column; /* Stack icons vertically on very small screens */
+        align-items: center;
+        gap: 10px;
+    }
+
+    .social-icon svg {
+        width: 20px; /* Further reduce icon size */
+        height: 20px;
+    }
 }

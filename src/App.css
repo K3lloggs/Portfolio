@@ -6,10 +6,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: Helvetica;
-  background: rgb(255, 255, 255);
-  background-color: #ebd9d9;
+  background-color: #ffffff; /* Set to a solid color, adjust to your preference */
   color: #1E1E1E;
   line-height: 1.6;
+  justify-content: center;
   scroll-behavior: smooth;
   scroll-padding-top: 60px;
 }
@@ -18,21 +18,36 @@ body {
   box-sizing: border-box;
 }
 
+
+
 /* Header */
 .header {
   width: 100%;
+  
   height: 60px; /* Adjust height */
   text-decoration: none;
   position: fixed; /* Use fixed to avoid overlapping content */
   top: 0;
   background-color: rgb(234, 228, 228);
   border-bottom: 3px solid #080808;
-  background: rgb(244, 241, 241);
+  background: rgb(255, 255, 255);
   display: flex;
   justify-content: center; /* Center items for simplicity */
   align-items: center;
   z-index: 1000;
   padding: 0 20px; /* Add padding to prevent overflow */
+}
+
+
+.container {
+  display: flex;
+  
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto; /* Center the container */
 }
 
 
@@ -46,51 +61,63 @@ body {
 }
 
 #blog a {
-  margin-left: 40px; /* Moves the link 20px to the left */
+  margin-left: 0px; /* Moves the link 20px to the left */
 }
 #blog h1 {
-  margin-right: 70px; /* Moves the header 60px to the left */
+  margin-right: 0px; /* Moves the header 60px to the left */
 }
 
 
 .nav {
+  border-radius: #000000;
   text-decoration: none;
   display: flex;
+  
   gap: 10px;
+  
 }
 
-.nav a {
 
-  padding: 10px;
+
+.nav a {
+  
+  padding: 8px;
   text-decoration: none;
   color: #2c2929;
   font-size: 14px;
   text-transform: none;
   letter-spacing: 1px;
-  transition: color 0.3s ease;
+  border: 2px solid #1E1E1E; /* Added border for all buttons */
+  border-radius: 15px; /* Rounded corners */
+  transition: color 0.8s ease;
   margin-left: 1px;
+  
+}
+.nav a:not(.chat-button):hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 13px rgba(255, 25, 25, 0.5);
+  background-color: transparent;
 }
 
 .nav a:hover {
-  color: #615a5a;
+  color: #000000;
   text-decoration: none;
 }
 
-.nav a:active {
-  color: rgb(216, 205, 205)
-}
+
 
 .nav a.chat-button {
-  padding: 12px 40px; /* Make the Chat button wider */
-  color: #000000;
-  background: linear-gradient(45deg, rgb(243, 179, 179), rgb(226, 161, 161), rgb(222, 37, 37));
-  font-weight: bold; /* Optional: Add emphasis */
+  padding: 12px 40px;
+  background: linear-gradient(45deg, rgb(243, 179, 179), rgb(226, 161, 161), rgb(222, 37, 37)); /* Initial gradient */
+  color: #ffffff;
+  border: 2px solid #1E1E1E;
+  font-weight: bold;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .nav a.chat-button:hover {
-  color: #ebe0e0;
-  background: linear-gradient(45deg, rgb(227, 43, 43), rgb(226, 161, 161), rgb(236, 8, 8));
-  font-weight: bold; /* Optional: Add emphasis */;
+  background: linear-gradient(45deg, rgb(227, 43, 43), rgb(226, 161, 161), rgb(236, 8, 8)); /* Hover gradient */
+  color: #ffffff;
 }
 
 .nav a.chat-button:active {
@@ -100,46 +127,46 @@ body {
 /* Home Container */
 .home-container {
   display: flex;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-height: calc(100vh - 60px);
-  /* Adjust for header height */
+  justify-content: center; /* Centers content vertically */
+  align-items: center; /* Centers content horizontally */
+  min-height: 100vh; /* Full viewport height */
   padding: 0 20px;
-  margin-top: 60px;
-  /* Adjust for fixed header */
+  margin: 0;
+  text-align: center;
 }
 
-
+/* Main Title Styles */
 .main-title {
   font-size: 120px;
   font-weight: 400;
   line-height: 1.2;
-  color: #1E1E1E;
-  margin-top: 50px;
-
+  color: #0d0d0d;
+  margin-bottom: 0;
+  padding: 0;
 }
 
 .subtitle {
   font-size: 5px;
   font-weight: 400;
   justify-content: left;
-  margin-left: 290px;
+  margin-left: -530px;
   line-height: 1.2;
   color: #1E1E1E;
-  margin-top: -100px;
-  margin-bottom: 100;
+  margin-top: -110px;
 }
 
 .subtitle span {
   display: block;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .tagline {
   font-size: 17px;
   font-weight: 400;
   line-height: 1.4;
-
+  margin-right: 10px;
   color: #1E1E1E;
   margin: 20px 0;
   /* Adds space above and below the tagline */
@@ -150,13 +177,14 @@ body {
 }
 
 .tagline p {
-  margin-left: 800px;
+  margin-left: 460px;
 }
 
 /* Section */
 .section {
   margin-left: 10px;
   opacity: 0;
+  margin-top: 5px;
   transform: translateY(50px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
@@ -169,15 +197,15 @@ body {
 .section h1 {
   font-size: 40px;
   margin-bottom: 20px;
-  margin-left: -280px;
-  color: #1E1E1E;
+  margin-left: 0;
+  color: #070707;
 }
 
 .section p {
   font-size: 18px;
   line-height: 1.0;
   display: flex;
-
+ 
   color: #333333;
 }
 
@@ -185,23 +213,23 @@ body {
 .container {
   width: 90%;
   max-width: 1200px;
-  margin-left: 20px;
+  margin: 0 auto; /* Center the container */
   padding: 0 20px;
 }
 
 /* About Section */
 .about-content {
   display: flex;
-  text-align: left;
-  margin-left: 240px;
+  text-align: auto;
+  margin-left: 0px;
   align-items: flex-start;
-  gap: 20px;
+  gap: 0px;
 }
 
 .text-content {
   display: flex;
-  justify-content: space-between;
-  margin-right: 200px;
+  justify-content: left;
+  margin-right: 40px;
   width: 100%;
   margin-bottom: 1rem;
 }
@@ -210,8 +238,7 @@ body {
   width: 150px;
   height: auto;
   flex-shrink: 0;
-  margin-right: -160px;
-  margin-top: 0px;
+  margin-left: 150px;
 
 }
 
@@ -224,18 +251,6 @@ body {
   align-items: start;
 }
 
-.project-preview {
-  position: relative;
-}
-
-.project-preview-content {
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.project-preview-content.visible {
-  opacity: 1;
-}
 
 .project-image {
   width: 100%;
@@ -292,47 +307,6 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-  .main-title {
-    font-size: 80px;
-  }
-
-  .subtitle {
-    font-size: 30px;
-
-  }
-
-  .tagline {
-    font-size: 16px;
-  }
-
-  .section h1 {
-    font-size: 32px;
-  }
-
-  .section p {
-    font-size: 16px;
-  }
-
-  .nav {
-    flex-direction: row;
-    gap: 10px;
-  }
-
-  .projects-container {
-    grid-template-columns: 1fr;
-  }
-
-  .button-container {
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .button-container .project-button {
-    flex: 1 1 calc(200px);
-  }
-}
 
 /* Additional Styles */
 
@@ -369,7 +343,7 @@ df-messenger {
 .chat-button {
   padding: 10px 20px;
   border: 2px solid #1E1E1E;
-  background: transparent;
+  background:transparent; /* Hover gradient */
   color: #1E1E1E;
   border-radius: 8px;
   cursor: pointer;
@@ -378,8 +352,8 @@ df-messenger {
 }
 
 .chat-button:hover {
-  background: #F5F5F5;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(45deg, rgb(241, 0, 0), rgb(240, 202, 202), rgba(255, 54, 54, 0.515)); /* Hover gradient */
+  box-shadow: 0 4px 10px rgba(214, 24, 24, 0.2);
 }
 
 /* Position the chat box to drop down */
@@ -396,5 +370,70 @@ df-messenger {
 
 /* Expand the chat box when opened */
 df-messenger[opened="true"] {
-  max-height: 500px; /* Adjust height as needed */
+  max-height: 300px; /* Adjust height as needed */
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 10px;
+  }
+  .main-title {
+    font-size: 80px;
+  }
+
+  .subtitle {
+    font-size: 30px;
+
+  }
+
+  .tagline {
+    font-size: 16px;
+  }
+
+  .section h1 {
+    font-size: 32px;
+  }
+
+  .section p {
+    font-size: 16px;
+  }
+
+  .nav {
+    flex-direction: row;
+    gap: 10px;
+  }
+  .nav a {
+    width: 90%; /* Make buttons full-width on smaller screens */
+    text-align: center;
+  }
+  .nav a.chat-button {
+    padding: 15px; /* Adjust padding for full-width button */
+  }
+
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+  }
+  
+
+  .text-content {
+    margin-bottom: 20px;
+  }
+
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+
+  .button-container {
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .button-container .project-button {
+    flex: 1 1 calc(200px);
+  }
 }
